@@ -1,0 +1,1 @@
+mongod --dbpath d:/data/db --logpath d:/data/log/mongod.log --logappend --port=27017
