@@ -5,13 +5,13 @@ import loginGithub from "@/components/base/loginGithub"
 const home = resolve => require(["@/components/home/home"],resolve)
 const article = resolve => require(["@/components/article/articleRoot"],resolve)
 const life = resolve => require(["@/components/life/life"],resolve)
-const msgboard = resolve => require(["@/components/messageBoard/msgboard"],resolve)
+const msgboard = resolve => require(["@/components/messageBoard/msgBoard"],resolve)
 const miss = resolve => require(["@/components/base/miss"],resolve)
 const articleShow = resolve => require(["@/components/article/articleShow"],resolve)
 const techincal = resolve => require(["@/components/article/techincal"],resolve)
 const search = resolve => require(["@/components/search/search"],resolve)
 const timeLine = resolve => require(["@/components/timeLine/timeLine"],resolve)
- 
+
 Vue.use(Router)
 Vue.use(Meta)
 
