@@ -1,12 +1,17 @@
 'use strict'
+// nodejs 环境校验
 require('./check-versions')()
 
 process.env.NODE_ENV = 'production'
 
+// 优雅的终端旋转器
 const ora = require('ora')
+// 用来删除文件和文件夹
 const rm = require('rimraf')
 const path = require('path')
 const chalk = require('chalk')
+
+// webpack的配置文件
 const webpack = require('webpack')
 const config = require('../config')
 const webpackConfig = require('./webpack.prod.conf')

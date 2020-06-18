@@ -1,7 +1,10 @@
-const axios = require("axios")
 const qs = require("qs")
+const axios = require("axios")
+
 import router from "../../router/"
+
 axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded; charset=UTF-8'
+
 //拦截器，为后端每一个请求加上authorization
 axios.interceptors.request.use(config => {
     const token = localStorage.getItem("validate-info-tk")
@@ -12,6 +15,7 @@ axios.interceptors.request.use(config => {
 }, error => {
     return Promise.reject(error)
 })
+
 //拦截器，后端验证token失败后跳转到登录界面
 axios.interceptors.response.use(data => {
 	if(data.data.code&&data.data.code === 401){
@@ -21,6 +25,7 @@ axios.interceptors.response.use(data => {
 },error => {
 	return Promise.reject(error)
 })
+
 function ajax(type,url,options){
 	return new Promise((resolve,reject) => {
 		axios({
@@ -41,6 +46,7 @@ function ajax(type,url,options){
 		})
 	})
 }
+
 const config = {
 	get(url,options){
 		return new Promise((resolve,reject) =>{

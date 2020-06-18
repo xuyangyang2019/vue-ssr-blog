@@ -1,35 +1,36 @@
-import Vue from 'vue' 
+import Vue from 'vue'
 import Router from 'vue-router'
 import store from "../store"
+
 //后台管理界面
-const miss = resolve => require(["@/components/base/miss"],resolve)
-const login = resolve => require(["@/components/login/login"],resolve)
-const admin = resolve => require(["@/components/home/admin"],resolve)
-const allArticles = resolve => require(["@/components/article/allArticles"],resolve)
-const eachTag = resolve => require(["@/components/article/eachTag"],resolve)
-const draft = resolve => require(["@/components/article/draft"],resolve)
-const review = resolve => require(["@/components/article/review"],resolve)
-const initEditor = resolve => require(["@/components/ue/initEditor"],resolve)
-const adminMsgBoard = resolve => require(["@/components/msgboard/adminMsgBoard"],resolve)
-const comments = resolve => require(["@/components/comment/comments"],resolve)
-const newMsg = resolve => require(["@/components/news/newMsg"],resolve)
-const adminSet = resolve => require(["@/components/adminSet/adminSet"],resolve)
-const search = resolve => require(["@/components/search/search"],resolve)
+const miss = resolve => require(["@/components/base/miss"], resolve)
+const login = resolve => require(["@/components/login/login"], resolve)
+const admin = resolve => require(["@/components/home/admin"], resolve)
+const allArticles = resolve => require(["@/components/article/allArticles"], resolve)
+const eachTag = resolve => require(["@/components/article/eachTag"], resolve)
+const draft = resolve => require(["@/components/article/draft"], resolve)
+const review = resolve => require(["@/components/article/review"], resolve)
+const initEditor = resolve => require(["@/components/ue/initEditor"], resolve)
+const adminMsgBoard = resolve => require(["@/components/msgboard/adminMsgBoard"], resolve)
+const comments = resolve => require(["@/components/comment/comments"], resolve)
+const newMsg = resolve => require(["@/components/news/newMsg"], resolve)
+const adminSet = resolve => require(["@/components/adminSet/adminSet"], resolve)
+const search = resolve => require(["@/components/search/search"], resolve)
 
 Vue.use(Router)
 
 const router = new Router({
-	mode: "history",
+  mode: "history",
   routes: [
     {
       path: "*",
       name: "miss",
       component: miss
     },
-    {
-      path: "/",
-      redirect: "/admin"  //方便调试，生产环境删除
-    },
+    // {
+    //   path: "/",
+    //   redirect: "/admin"  //方便调试，生产环境删除
+    // },
     {
       path: "/login",
       name: "login",
@@ -119,9 +120,9 @@ const router = new Router({
         },
         {
           path: "/admin/search/:base",
-          name : "search",
+          name: "search",
           component: search,
-           meta: {
+          meta: {
             requireAuth: true,
             keepAlive: true
           }
@@ -155,18 +156,18 @@ const router = new Router({
     }
   ]
 })
-router.beforeEach((to,from,next) => {
+router.beforeEach((to, from, next) => {
   //需要管理权限但是没有登录
-  if(to.meta.requireAuth && !localStorage.getItem("validate-info-tk")){
-    store.commit("toPath",to.fullPath)
-    next({name: "login"})
+  if (to.meta.requireAuth && !localStorage.getItem("validate-info-tk")) {
+    store.commit("toPath", to.fullPath)
+    next({ name: "login" })
     //需要管理权限且已经获取到token值则直接放行
-  }else if(to.meta.requireAuth && localStorage.getItem("validate-info-tk")){
+  } else if (to.meta.requireAuth && localStorage.getItem("validate-info-tk")) {
     next()
     //login界面
-  }else{
+  } else {
     next()
-  } 
+  }
 })
 
 export default router
