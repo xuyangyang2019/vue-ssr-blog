@@ -5,6 +5,7 @@ import Vue from 'vue'
 import store from "./store/index"
 import App from './App'
 import router from './router'
+
 Vue.filter("reviseTime", function (value) {
   let localTime = new Date(value),
     year = localTime.getFullYear(),
@@ -23,6 +24,7 @@ Vue.filter("reviseTime", function (value) {
   // + ":" +seconds
   return finTime
 })
+
 Vue.config.productionTip = false
 
 /* eslint-disable no-new */
