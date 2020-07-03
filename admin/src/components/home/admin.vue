@@ -44,7 +44,7 @@
 												<span>全部文章 </span>
 											</span>
 											<span class = "articles-sum">（共 {{ tagsObj.articlesSum | ifZero}}  篇） </span>
-										</div>	
+										</div>
 									</router-link>
 								</li>
 								<li v-for = "item in tagsObj.tags">
@@ -158,7 +158,7 @@
 		data(){
 			return{
 				show: false,
-				location: [],	
+				location: [],
 				choseType: "key",
 				searchKey: "",
 				date: {from: "",to: ""},
@@ -249,7 +249,7 @@
 				}
 		        if(this.timer){
 		          	clearTimeout(this.timer)
-		        }   
+		        }
 		        this.timer = setTimeout(function(){
 		          	func.apply(context,args)
 		        },delay)
@@ -282,7 +282,7 @@
 					}
 					let date = this.date.from + "to" + this.date.to
 					this.$router.push({name: "search",params: {base: date}})
-				}	
+				}
 			},
 			back: function(pathName,params){
 				if(pathName === "eachTag"){
@@ -306,36 +306,36 @@
 			analysisRoute: function(to,from){
 				let first = {pathName: "allArticles",showName: "已发表文章"}
 				switch(to.name){
-					case "allArticles": 
+					case "allArticles":
 					this.location = [first]
 					break
-					case "eachTag": 
+					case "eachTag":
 					let tag = to.params.tag
 					if(tag === "life"){
 						tag = "生活"
 					}
 					this.location = [first,{pathName: "eachTag",showName: tag,params: {tag: tag}}]
 					break
-					case "review": 
+					case "review":
 						this.location = this.forLocation
 
 					break
-					case "draft": 
+					case "draft":
 					this.location = [{pathName: "draft",showName: "草稿箱"}]
 					break
-					case "adminMsgBoard": 
+					case "adminMsgBoard":
 					this.location = [{pathName: "adminMsgBoard",showName: "留言板"}]
 					break
-					case "comments": 
+					case "comments":
 					this.location = [{pathName: "comments",showName: "文章评论"}]
 					break
-					case "newMsg": 
+					case "newMsg":
 					this.location=[{pathName: "newMsg",showName: "新消息"}]
 					break
-					case "adminSet": 
+					case "adminSet":
 					this.location=[{pathName: "adminSet",showName: "账户设置"}]
 					break
-					case "search" : 
+					case "search" :
 					this.location = [{pathName: "search",showName: "搜索"}]
 				}
 			}
@@ -403,7 +403,7 @@
 			vertical-align: middle;
 		}
 		h1{
-			
+
 			display: inline-block;
 			vertical-align: middle;
 		}
@@ -432,6 +432,7 @@
 		justify-content: space-between;
 		align-items: center;
 		flex-wrap: wrap;
+    /* border:solid red 1px; */
 	}
 	.location div{
 		display: inline;
@@ -519,7 +520,7 @@
 		color: #1A1A1A;
 		a{
 			text-decoration: none;
-			color: #6AA7FC;	
+			color: #6AA7FC;
 		}
 		a:hover{
 			color: #1717FA;
@@ -541,8 +542,8 @@
 			border-radius: 2px;
 			width: 60px;
 			padding: 2px;
-			appearance: none;  
-			-moz-appearance: none;    /*for firefox*/       
+			appearance: none;
+			-moz-appearance: none;    /*for firefox*/
 			-webkit-appearance: none;    /*for chrome*/
 			background: url("/img/arrow-down.png") right no-repeat;
 		}
@@ -572,14 +573,14 @@
 			height: 15px;
 			width: 150px;
 		}
-		input::-webkit-inner-spin-button { 
-			visibility: hidden; 
+		input::-webkit-inner-spin-button {
+			visibility: hidden;
 		}
-		input::-ms-inner-spin-button { 
-			visibility: hidden; 
+		input::-ms-inner-spin-button {
+			visibility: hidden;
 		}
-		input::-moz-inner-spin-button { 
-			visibility: hidden; 
+		input::-moz-inner-spin-button {
+			visibility: hidden;
 		}
 		input::-webkit-clear-button{
 		   	display: none;

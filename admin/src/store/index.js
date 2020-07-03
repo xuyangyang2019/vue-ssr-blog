@@ -7,18 +7,19 @@ Vue.use(Vuex)
 
 const store = new Vuex.Store({
   state: {
-    articles: { all: [], drafts: [], tags: [], search: [], only: [] },
-    tagsObj: {},
-    pageArray: [],//已发表页码数组
-    msgBoard: [],
-    comments: [],
-    news: { pvNum: 0, comment: [], msgboard: [], like: [], pv: [] },
     toPath: "/admin",
+    tagsObj: {},
+    redSup: { c: false, m: false, l: false, p: false },
+    forLocation: [],
+    news: { pvNum: 0, comment: [], msgboard: [], like: [], pv: [] },
+    articles: { all: [], drafts: [], tags: [], search: [], only: [] },
+    pageArray: [],// 已发表页码数组
+    msgBoard: [], // 留言板
+    comments: [], // 评论
+    // =============================================================
     responser: "",
     viewArticle: {},
-    forLocation: [],
     page: 1,
-    redSup: { c: false, m: false, l: false, p: false }
   },
   mutations,
   actions
