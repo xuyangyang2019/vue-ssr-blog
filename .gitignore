@@ -2,3 +2,5 @@ front/dist
 front/node_modules
 admin/dist
 admin/node_modules
+# 数据库备份
+front/server/db/dbData
