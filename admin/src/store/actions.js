@@ -129,6 +129,18 @@ export default {
   reduceComments({ commit }, payload) {
     return api.patch("/api/reduceComments", payload)
   },
+  // 重置密码
+  reviseKey({ commit }, payload) {
+    return api.patch("/api/reviseKey", payload)
+  },
+  // 拷贝数据
+  copyData: function () {
+    return api.get("/api/copyData")
+  },
+  // 下载数据库
+  downloadDb: function () {
+    return api.get("/api/downloadSingle")
+  },
   // ======================================================
   search({ commmit, state }, payload) {
     return api.get("/api/adminSearch", payload).then((data) => {
@@ -148,15 +160,6 @@ export default {
   },
   removeNews({ commit, state }, payload) {
     return api.delete("/api/deleteNews", payload)
-  },
-  reviseKey({ commit }, payload) {
-    return api.patch("/api/reviseKey", payload)
-  },
-  copyData: function () {
-    return api.get("/api/copyData")
-  },
-  downloadDb: function () {
-    return api.get("/api/downloadSingle")
   },
   confirmToken: function () {
     return api.get("/api/confirmToken")
