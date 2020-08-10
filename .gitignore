@@ -1,5 +1,6 @@
 front/dist
 front/node_modules
+front/static/img/upload
 admin/dist
 admin/node_modules
 # 数据库备份
