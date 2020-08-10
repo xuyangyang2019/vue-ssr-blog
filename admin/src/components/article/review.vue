@@ -8,13 +8,13 @@
 			</div>
 			<div class = "review-abstract">
 				<h4>前言：</h4>
-				<span>{{ item.abstract }}</span> 
+				<span>{{ item.abstract }}</span>
 			</div>
 			<div class = "review-date">
 				<h4>发表时间：</h4>
-				<span>{{ item.date | reviseTime }}</span> 
+				<span>{{ item.date | reviseTime }}</span>
 			</div>
-			<div class = "review-content" v-html = "item.content">{{ item.content }}</div>
+			<div class = "review-content" v-html = "item.content"></div>
 		</div>
 	</div>
 </template>
