@@ -5,7 +5,7 @@
   </div>
 </template>
 <script>
-    import { mapActions } from "vuex" 
+    import { mapActions } from "vuex"
     import UE from './UEditor'
     export default {
         components:{
