@@ -10,34 +10,34 @@ module.exports = {
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
     proxyTable: {
-        '/api': {
-            target: 'http://localhost:6180',
-            changeOrigin: true,
-            pathRewrite: {
-                '^/api': '/api'
-            }
-        },
-        '/ueditor': {
-                target: 'http://localhost:6180',
-                changeOrigin: true,
-                pathRewrite: {
-                    '^/ueditor': '/ueditor'
-                }
-            },
-            // '/nodejs': {
-            //     target: 'http://localhost:6180',
-            //     changeOrigin: true,
-            //     pathRewrite: {
-            //         '^/nodejs': '/nodejs'
-            //     }
-            // },
-            '/img': {
-                target: 'http://localhost:6180',
-                changeOrigin: true,
-                pathRewrite: {
-                    '^/img': '/img'
-                }
-            }
+      '/api': {
+        target: 'http://localhost:6180',
+        changeOrigin: true,
+        pathRewrite: {
+          '^/api': '/api'
+        }
+      },
+      '/ueditor': {
+        target: 'http://localhost:6180',
+        changeOrigin: true,
+        pathRewrite: {
+          '^/ueditor': '/ueditor'
+        }
+      },
+      // '/nodejs': {
+      //   target: 'http://localhost:6180',
+      //   changeOrigin: true,
+      //   pathRewrite: {
+      //     '^/nodejs': '/nodejs'
+      //   }
+      // },
+      '/img': {
+        target: 'http://localhost:6180',
+        changeOrigin: true,
+        pathRewrite: {
+          '^/img': '/img'
+        }
+      }
     },
 
     // Various Dev Server settings
