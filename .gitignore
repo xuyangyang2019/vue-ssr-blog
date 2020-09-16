@@ -3,5 +3,6 @@ front/node_modules
 front/static/img/upload
 admin/dist
 admin/node_modules
+*.log
 # 数据库备份
 front/server/db/dbData
