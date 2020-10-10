@@ -1,19 +1,23 @@
 const express = require('express')
-const path = require('path')
-const LRU = require('lru-cache')
-const resolve = file => path.resolve(__dirname, file)
-const { createBundleRenderer } = require('vue-server-renderer')
+
 const fs = require('fs')
 const net = require('net')
-const http = require('http')
-const cookieParser = require('cookie-parser')
-const bodyParser = require('body-parser')
-const ueditor = require("ueditor")
+const path = require('path')
+const LRU = require('lru-cache')
+// const http = require('http')
 const logger = require('morgan')
-const route = require("./server/api")
+const bodyParser = require('body-parser')
 const compression = require('compression')
+const cookieParser = require('cookie-parser')
 const template = fs.readFileSync('./src/index.template.html', 'utf-8')
+
+const ueditor = require("ueditor")
+const route = require("./server/api")
+const { createBundleRenderer } = require('vue-server-renderer')
+const resolve = file => path.resolve(__dirname, file)
+
 const isProd = process.env.NODE_ENV === 'production'
+
 const server = express()
 server.use(logger('dev'))//日志记录中间件，将请求信息打印在控制台
 server.use(bodyParser.json())
@@ -25,6 +29,7 @@ server.set('views', path.join(__dirname, 'dist'))
 server.engine('.html', require('ejs').__express)
 server.set('view engine', 'ejs')
 route(server)
+
 function createRenderer(bundle, options) {
   return createBundleRenderer(bundle, Object.assign(options, {
     template: template,
@@ -38,6 +43,7 @@ function createRenderer(bundle, options) {
 }
 let renderer
 let readyPromise
+
 if (isProd) {
   const bundle = require('./dist/front/vue-ssr-server-bundle.json')
   const clientManifest = require('./dist/front/vue-ssr-client-manifest.json')
@@ -49,13 +55,16 @@ if (isProd) {
     renderer = createRenderer(bundle, options)
   })
 }
+
 const serve = (path, cache) => express.static(resolve(path), {
   maxAge: cache && isProd ? 1000 * 60 * 60 * 24 * 30 : 0
 })
+
 server.use(compression()) //开启gzip压缩
 server.use('/dist', serve('./dist', true))
 server.use('/static', serve('./src/static', true))
 server.use(express.static(path.join(__dirname, 'static'))) //设置静态文件夹
+
 server.use('/api/ueditor/UE', ueditor(path.join(__dirname, 'static'), function (req, res, next) {
   //客户端上传文件设置
   let imgDir = '/img/upload'
@@ -83,6 +92,7 @@ server.use('/api/ueditor/UE', ueditor(path.join(__dirname, 'static'), function (
     res.redirect('/ueditor/nodejs/config.json');
   }
 }))
+
 //前端请求
 server.get(["/", "/home", "/article", "/article/:articleList", "/article/:articleList/:id", "/life",
   "/life/:id", "/msgBoard", "/search/:searchKey", "/timeLine/:time", "/login_qq"], (req, res) => {
@@ -101,6 +111,7 @@ server.get(["/", "/home", "/article", "/article/:articleList", "/article/:articl
       res.end(html)
     })
   })
+
 //后端请求
 server.get(["/admin", "/admin/*", "/login"], (req, res) => {
   fs.readFile('../admin/dist/admin.html', 'utf-8', function (err, data) {
@@ -113,6 +124,7 @@ server.get(["/admin", "/admin/*", "/login"], (req, res) => {
   });
   // res.render("admin.html",{title: "登录"})
 })
+
 server.get('*', function (req, res) {
   res.render('404.html', {
     title: 'No Found'
