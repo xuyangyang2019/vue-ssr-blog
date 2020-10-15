@@ -6,11 +6,13 @@
 		<article-list :articleList = "articles.all"></article-list>
 	</div>
 </template>
+
 <script>
 	import { mapActions,mapState,mapMutations } from "vuex"
 	import articleList from "@/components/article/articleList"
 	import loading from "@/components/base/loading"
-	import banner from "@/components/base/banner"
+  import banner from "@/components/base/banner"
+
 	export default {
 		components: {
 			articleList,
@@ -24,7 +26,7 @@
 			}
 		},
 		asyncData({store,route}){
-			return Promise.all([ 
+			return Promise.all([
 				store.dispatch("getArticles",{
 					publish: true,
 					page: 1,
@@ -52,10 +54,11 @@
 		},
 		methods: {
 			...mapActions(["getArticlesCount"]),
-			...mapMutations(["clear","changeCode"])	
+			...mapMutations(["clear","changeCode"])
 		}
 	}
 </script>
+
 <style lang = "less" scoped>
 	.none-article{
 		padding: 20px;

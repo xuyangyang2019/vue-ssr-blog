@@ -2,7 +2,9 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import Meta from "vue-meta"
 import loginGithub from "@/components/base/loginGithub"
+
 const home = resolve => require(["@/components/home/home"],resolve)
+
 const article = resolve => require(["@/components/article/articleRoot"],resolve)
 const life = resolve => require(["@/components/life/life"],resolve)
 const msgboard = resolve => require(["@/components/messageBoard/msgBoard"],resolve)

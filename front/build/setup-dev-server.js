@@ -1,7 +1,7 @@
 const path = require('path')
 const webpack = require('webpack')
 const MFS = require('memory-fs')
-const base = require('./webpack.base.config')
+// const base = require('./webpack.base.config')
 const clientConfig = require('./webpack.client.config')
 const serverConfig = require('./webpack.server.config')
 process.env.NODE_ENV === 'development'
@@ -23,7 +23,7 @@ module.exports = function setupDevServer (app, cb) {
 
   // modify client config to work with hot middleware
   clientConfig.entry.app = ['webpack-hot-middleware/client', clientConfig.entry.app]
-  //增加后台热更新
+  // 增加后台热更新
   clientConfig.output.filename = '[name].js'
   clientConfig.plugins.push(
     new webpack.HotModuleReplacementPlugin(),
