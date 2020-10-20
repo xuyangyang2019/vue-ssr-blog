@@ -65,12 +65,12 @@
 		methods: {
 			//实现图片懒加载
 			lazyLoad: function(){
-				this.$refs.img.forEach((item,index,arr) =>{	
+				this.$refs.img.forEach((item,index,arr) =>{
 					if(index === this.currentIndex){
 						//清除定时器，防止图片还没加载完成就轮播到下一张
 						clearInterval(this.timer)
 						let img = new Image()
-						img.src = item.dataset.src
+            img.src = item.dataset.src
 						img.onload = () =>{
 							item.src = img.src
 							this.slider()
@@ -240,3 +240,4 @@
 		}
 	}
 </style>
+

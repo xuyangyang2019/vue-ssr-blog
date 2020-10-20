@@ -29,32 +29,32 @@ module.exports = {
   module: {
     noParse: /es6-promise\.js$/, // avoid webpack shimming process
     rules: [{
-        test: /\.vue$/,
-        loader: 'vue-loader',
-        options: vueConfig
-      },
-      {
-        test: /\.js$/,
-        loader: 'babel-loader',
-        exclude: /node_modules/
-      },
-      {
-        test: /\.(gif|jpg|png|woff|svg|eot|ttf)\??.*$/,
-        loader: 'url-loader',
-        options: {
-          limit: 10000,
-          name: '[name].[ext]?[hash]'
-        }
-      },
-      {
-        test: /\.(less|css|scss)$/,
-        use: isProd ?
-          ExtractTextPlugin.extract({
-            use: ['css-loader?minimize','less-loader','scss-loader'],
-            fallback: 'vue-style-loader'
-          }) :
-          ['vue-style-loader', 'css-loader', 'less-loader','sass-loader']
+      test: /\.vue$/,
+      loader: 'vue-loader',
+      options: vueConfig
+    },
+    {
+      test: /\.js$/,
+      loader: 'babel-loader',
+      exclude: /node_modules/
+    },
+    {
+      test: /\.(gif|jpg|png|woff|svg|eot|ttf)\??.*$/,
+      loader: 'url-loader',
+      options: {
+        limit: 10000,
+        name: '[name].[ext]?[hash]'
       }
+    },
+    {
+      test: /\.(less|css|scss)$/,
+      use: isProd ?
+        ExtractTextPlugin.extract({
+          use: ['css-loader?minimize', 'less-loader', 'scss-loader'],
+          fallback: 'vue-style-loader'
+        }) :
+        ['vue-style-loader', 'css-loader', 'less-loader', 'sass-loader']
+    }
     ]
   },
   performance: {
@@ -79,12 +79,12 @@ module.exports = {
         filename: 'css/common.[chunkhash].less'
       }),
       new CopyWebpackPlugin([
-      {
-        from: path.resolve(__dirname, '../static/404.html'),
-        to: path.resolve(__dirname, '../dist'),
-        ignore: ['.*']
-      }
-    ])
+        {
+          from: path.resolve(__dirname, '../static/404.html'),
+          to: path.resolve(__dirname, '../dist'),
+          ignore: ['.*']
+        }
+      ])
     ] :
     [
       new FriendlyErrorsPlugin()
