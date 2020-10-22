@@ -321,7 +321,7 @@ h2 {
   margin-right: 25px;
   margin-top: 15px;
   color: red;
-  display: inline-block;
+  /* display: inline-block; */
   cursor: pointer;
 }
 .icon-submit-box {

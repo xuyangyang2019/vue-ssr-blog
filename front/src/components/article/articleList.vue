@@ -9,7 +9,7 @@
 					<span class = "icon-tag-stroke"></span>
 					<span class = "article-msg-tag">
 						<span v-for = "tag in item.tag"> {{ tag | changeLife}} </span>
-					</span>	
+					</span>
 					<span class = "icon-clock"></span>
 					<span class = "article-msg-time">{{ item.date | reviseTime}}</span>
 				</div>
@@ -27,12 +27,12 @@
 				</div>
 			</li>
 		</ul>
-		<transition name = "fade" mode = "out-in">	
+		<transition name = "fade" mode = "out-in">
 			<page v-if = "pageArr.length > 1" ></page>
 	    </transition>
 	</div>
 </template>
-<script> 	
+<script>
 	import { mapActions,mapState ,mapMutations } from "vuex"
 	import page from "@/components/base/page"
 	export default {
@@ -60,7 +60,7 @@
 			Prism.highlightAll()
 		},
 		computed: {
-			...mapState(["technicalArticles","pageArr","tagBg"])	
+			...mapState(["technicalArticles","pageArr","tagBg"])
 		},
 		methods: {
 			...mapMutations(["changeTitle"]),
