@@ -13,7 +13,9 @@
                 <a href="javascript: void(0)" @click="backHome">首页</a>
                 <div v-for="item in location">
                   ->
-                  <a href="javascript: void(0)" @click="back(item)">{{ item.showName }}</a>
+                  <a href="javascript: void(0)" @click="back(item)">{{
+                    item.showName
+                  }}</a>
                 </div>
               </div>
               <keep-alive v-if="$route.meta.keepAlive">
@@ -220,7 +222,6 @@ body {
 
 #app {
   margin: 50px 0 0 0;
-  border: solid red 1px;
   height: 100%;
 }
 
