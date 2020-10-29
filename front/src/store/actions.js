@@ -1,6 +1,6 @@
 import api from "./api"
 export default {
-  //获取文章
+  // 获取文章
   getArticles({ commit, state }, payload) {
     let params = {}
     if (!payload.tag) {
@@ -31,14 +31,14 @@ export default {
       return data
     })
   },
-  //获取技术文章的tag生成导航
+  // 获取技术文章的tag生成导航
   getTagsclass({ commit, state }, payload) {
     return api.get("/api/tags", { publish: payload.publish }).then((data) => {
       state.tags = data
       return data
     })
   },
-  //获取对应模块的文章总数，为分页按钮个数提供支持
+  // 获取对应模块的文章总数，为分页按钮个数提供支持
   getArticlesCount({ commit, state }, payload) {
     return api.get("/api/getCount", payload).then((data) => {
       state.articles.sum = data
@@ -122,7 +122,7 @@ export default {
   addComment({ commit }, payload) {
     return api.patch("/api/addComment", payload)
   },
-
+  // 文章点赞
   loveArticle({ commit }, payload) {
     return api.patch("/api/loveArticle", payload)
   },
