@@ -1,10 +1,12 @@
 const express = require('express')
 const router = express.Router()
 const db = require("../db/db")
+
 const localTime = require("../utils/reviseTime")
 const confirmToken = require("../middleware/confirmToken")
+
 router.get("/api/getComments",(req,res) => {
-	let num = parseInt(req.query.articleId)	
+	let num = parseInt(req.query.articleId)
 	db.comment.find({articleId: req.query.articleId},(err,doc) => {
 		if(err){
 			res.status(500).end()
@@ -49,7 +51,7 @@ router.patch("/api/reduceComments",confirmToken,(req,res) =>{
 			res.json({deleteCode: 200})
 		}
 	})
-})	
+})
 router.post("/api/saveComment",(req,res) => {
 	new db.comment(req.body).save((err,doc) => {
 		if(err){
@@ -68,9 +70,9 @@ router.post("/api/saveComment",(req,res) => {
 				content: req.body.name + "在" + localTime(Date.now()) + "评论了你的文章--" +  req.body.title
 			}).save()
 		}
-	})	
+	})
 })
-//前后端文章评论回复（二级评论）
+// 前后端文章评论回复（二级评论）
 router.patch("/api/addComment",(req,res) => {
 	let addInfo = {
 		name: req.body.name,
@@ -107,6 +109,6 @@ router.patch("/api/addLike",(req,res) => {
 				res.json({code: 200})
 			}
 		})
-	}	
+	}
 })
 module.exports = router
