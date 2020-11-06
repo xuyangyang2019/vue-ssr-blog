@@ -8,7 +8,7 @@
 						<div class = "chose" :class = "{'checked': ifchecked}">
 							<input type = "checkbox" id = "checkAll" @click = "allChecked" v-model = "ifchecked">
 							<label for = "checkAll">全选</label>
-						</div>	
+						</div>
 					</th>
 					<th v-for = "th in initTable.th">{{ th }}</th>
 					<th>操作</th>
@@ -76,7 +76,7 @@
 						</tr>
 					</transition>
 					<!-- 管理员回复 -->
-					<transition name = "review">	
+					<transition name = "review">
 						<tr v-if = "current.reply === index" class = "msg-reply">
 							<td :colspan = "$route.name === 'comments' ? 7 : 6">
 								<textarea placeholder = "输入回复内容" @focus = "emptyWarning = false" v-model = "replyContent" :class = "{'empty-warning': emptyWarning}"></textarea>
@@ -87,19 +87,19 @@
 										<button @click = "postReply(item._id)">回复</button>
 										<button @click = "current.reply = -1">取消</button>
 									</div>
-								
+
 								</div>
 							</td>
 						</tr>
 					</transition>
-					<!-- 管理员回复结束 -->	
+					<!-- 管理员回复结束 -->
 				</template>
 			</tbody>
 		</table>
 		<div class = "remove-all" v-show = "msgItem.length">
 			<button @click = "sureDelete(-1)">删除选中项</button>
 		</div>
-		<transition name = "fade" mode = "out-in">	
+		<transition name = "fade" mode = "out-in">
 			<page v-show = "pageArray.length > 1"></page>
 	    </transition>
 	     <transition name = "fade">
@@ -113,7 +113,7 @@
 		    		</div>
 		    	</div>
 		    </div>
-		</transition>    
+		</transition>
 	</div>
 </template>
 <script>
@@ -161,7 +161,7 @@
 				//加定时器是因为先触发click事件，此时articleItem
 				//还没有被推入新的值，因此将此事件推入事件队列，先让articleItem插值完成
 				setTimeout(() => {
-					if(this.msgItem.length === this.mcList.length){ 
+					if(this.msgItem.length === this.mcList.length){
 						this.ifchecked = true
 					}else{
 						this.ifchecked = false
@@ -171,7 +171,7 @@
 			allChecked: function(){
 				if(this.msgItem.length !== this.mcList.length){
 					let _arr = []
-					this.mcList.forEach((item,index,arr) => { 
+					this.mcList.forEach((item,index,arr) => {
 						_arr.push(item._id)
 					})
 					this.msgItem = _arr
@@ -180,13 +180,13 @@
 				}
 			},
 			reviewBoard: function(index,aite){
-				this.current.review.push(index) 
+				this.current.review.push(index)
 			},
 			exitReview: function(index){
 				this.current.review.splice(this.current.review.indexOf(index),1)
 			},
 			replyBoard: function(index,aite){
-				this.current.reply = index 
+				this.current.reply = index
 				this.aite = aite
 			},
 			postReply: function(id){
@@ -325,7 +325,7 @@
 							that.sureInfo.type = ""
 						}
 					})
-				}	
+				}
 			}
 		}
 	}
@@ -338,7 +338,7 @@
 		border-collapse: collapse;
 		table-layout: fixed;
 		width: 100%;
-		.parent-tr{	
+		.parent-tr{
 			color: #606266;
 			border-bottom: 1px solid #ccc;
 		}
@@ -351,7 +351,7 @@
 		}
 		tbody tr:nth-child(odd){
 			background: #F5F7FA;
-		}	
+		}
 		th{
 			color: #333;
 			text-overflow: ellipsis;
@@ -363,7 +363,7 @@
 		.parent-tr td{
 			padding: 5px;
 		}
-		.parent-tr td:not(:first-child),th:not(:first-child){	
+		.parent-tr td:not(:first-child),th:not(:first-child){
 			text-align: center;
 		}
 		.parent-tr td:not(:last-child){
@@ -596,7 +596,7 @@
 		}
 	}
 	@media screen and(max-width: 767px){
-		.validate-bin{	
+		.validate-bin{
 			width: 80%;
 		}
 	}

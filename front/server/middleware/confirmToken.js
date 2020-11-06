@@ -1,5 +1,6 @@
 const jwt = require("jsonwebtoken")
 const secret = require("../secret")
+
 const confirmToken = (req,res,next) => {
 	if(!req.headers.authorization){
 		res.json({code: 401})
@@ -14,4 +15,5 @@ const confirmToken = (req,res,next) => {
 		})
 	}
 }
+
 module.exports = confirmToken
