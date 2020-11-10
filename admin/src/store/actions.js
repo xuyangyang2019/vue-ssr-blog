@@ -142,7 +142,7 @@ export default {
     return api.get("/api/downloadSingle")
   },
   // ======================================================
-  search({ commmit, state }, payload) {
+  search({ commit, state }, payload) {
     return api.get("/api/adminSearch", payload).then((data) => {
       if (data.length) {
         state.articles.search = data
