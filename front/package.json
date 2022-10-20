@@ -51,7 +51,7 @@
     "less-loader": "^4.0.5",
     "lru-cache": "^4.1.1",
     "md5": "^2.2.1",
-    "mongoose": "^4.13.9",
+    "mongoose": "^4.13.21",
     "morgan": "^1.9.0",
     "node-notifier": "^5.1.2",
     "node-sass": "^4.7.2",
